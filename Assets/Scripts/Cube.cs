@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class Cube : MonoBehaviour
 {
-    [HideInInspector] public UnityEvent Move;
+    [HideInInspector] public UnityEvent<Transform> Move;
     [HideInInspector] public UnityEvent<Vector3, GameObject> Destroy;
 
     private StateCube cube;
@@ -25,7 +25,7 @@ public class Cube : MonoBehaviour
 
     void Update()
     {
-        Move?.Invoke();
+        Move?.Invoke(transform);
         Destroy?.Invoke(startPos, gameObject);
     }
 }
