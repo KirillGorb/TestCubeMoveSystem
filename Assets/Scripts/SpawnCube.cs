@@ -10,23 +10,23 @@ public class SpawnCube : MonoBehaviour
 
     [SerializeField] private float _timeRespawn;
 
-    public void SetTimer(InputField inputField)
+    private void Start()
     {
-        _timeRespawn =Math.Abs( Convert.ToInt16(inputField.text));
         StartCoroutine(Spawn());
     }
 
-    public void StopTimer()
+    public void SetTimer(InputField inputField)
     {
-        StopCoroutine(Spawn());
+        _timeRespawn = Math.Abs(Convert.ToInt16(inputField.text));
     }
+
 
     private IEnumerator Spawn()
     {
         while (true)
         {
             yield return new WaitForSeconds(_timeRespawn);
-
+            print(_timeRespawn);
             Instantiate(_cube, _spawnPositionCube.position, Quaternion.identity);
         }
     }
