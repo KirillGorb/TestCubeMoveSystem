@@ -16,6 +16,11 @@ public class SpawnCube : MonoBehaviour
         StartCoroutine(Spawn());
     }
 
+    public void StopTimer()
+    {
+        StopCoroutine(Spawn());
+    }
+
     private IEnumerator Spawn()
     {
         while (true)
